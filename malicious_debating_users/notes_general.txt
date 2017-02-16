@@ -1,0 +1,134 @@
+
+TODO List:
+===========
+
+- Analyze the values of the two "theta" parameter vectors (for liars and hiders).
+
+- Define and use complex features (such as f1*f2, f1*f3, f2*f3, f1*f2*f3, ...)
+  Are the results better?
+
+  
+Parameters:
+===========
+
+- Remember that these experiments demand choices for a number of parameters:
+
+ (1) Concerning the debate procedure:
+     e.g. # agents, # agent types, % agent disagreement with his type, # args, type of graph, density of relations, lying budget, hiding budget.
+     Some of these choices significantly affect some aspects of the debates (e.g. the avg number of lies, hides, moves). 
+ (2) Learning component:
+     algorithm (e.g. logistic regression), set of features, alpha, # iterations, lambda.  
+  
+  
+Results Log:
+============
+
+==> In the EUMAS'15 experiments we had obtained:
+    Accuracy of predictions for above / below avg liars = 0.74174
+    Accuracy of predictions for above / below avg hiders = 0.68750   
+#############################################################################
+==> Training set of 10,000 debates, logistic regression, 6 features, test set of 5,000 debates.
+    Testing the accuracy of finding the values of "hasLied" and "hasHidden".
+
+Vector theta_hasLied (computed by fminunc):
+ -4.490650
+ 1.024680
+ -1.542220
+ 2.438914
+ 0.298210
+ 1.064343
+ -24.203998
+
+Vector theta_hasHidden (computed by fminunc):
+ -3.044258
+ -9.209540
+ -5.826631
+ -2.528500
+ 4.478792
+ 6.562284
+ -9.020370
+
+Results (LIARS):
+****************
+True positives: 9599
+False positives: 4057
+True negatives: 36677
+False negatives: 9667
+Precision: 0.702914
+Recall: 0.498235
+Accuracy: 0.771267
+F1-score: 0.583136
+
+Results (HIDERS):
+*****************
+True positives: 9578
+False positives: 3262
+True negatives: 41539
+False negatives: 5621
+Precision: 0.745950
+Recall: 0.630173
+Accuracy: 0.851950
+F1-score: 0.683191
+#############################################################################
+==> Training set of 10,000 debates, logistic regression, 6 features, test set of 5,000 debates.
+    Testing the accuracy of finding the values of "hasBeenAboveAvgLiar" and "hasBeenAboveAvgHider".
+    Their definitions are the same as those in our EUMAS'15 work.
+    A problem with these definitions is related to the use of ">=", when ">" seems to have given more meaningful results:
+    as it is, when no agent hides / lies, then they are all considered above avg hiders / liars (not very meaningful)!
+
+Vector theta_hasLied (computed by fminunc):
+ 0.306937
+ 1.030858
+ -1.639739
+ 1.624894
+ 0.687112
+ -3.099805
+ -19.758598
+
+Vector theta_hasHidden (computed by fminunc):
+ 0.770176
+ 1.259147
+ -9.292617
+ -0.563780
+ 0.603445
+ -1.962516
+ 0.396109
+
+Accuracy of finding liars in test set: 76.376667
+Accuracy of finding hiders in test set: 77.301667
+#############################################################################
+==> Training set of 10,000 debates, logistic regression, 3 features (columns 1,3,5), test set of 5,000 debates.
+    Testing the accuracy of finding the values of "hasLied" and "hasHidden".
+
+Vector theta_hasLied (computed by fminunc):
+ -0.501913
+ 1.389017
+ 3.320928
+ -4.080416
+
+Vector theta_hasHidden (computed by fminunc):
+ -2.677170
+ -13.791859
+ 1.592682
+ 4.569796
+
+Accuracy of finding liars in test set: 70.345000
+Accuracy of finding hiders in test set: 83.556667
+#############################################################################
+==> Training set of 10,000 debates, logistic regression, 3 features (columns 2,4,6), test set of 5,000 debates.
+    Testing the accuracy of finding the values of "hasLied" and "hasHidden".
+
+Vector theta_hasLied (computed by fminunc):
+ -0.922459
+ -0.590867
+ 2.117514
+ -23.633625
+
+Vector theta_hasHidden (computed by fminunc):
+ -2.367319
+ -13.611357
+ 1.617088
+ -1.731788
+
+Accuracy of finding liars in test set: 77.058333
+Accuracy of finding hiders in test set: 79.808333
