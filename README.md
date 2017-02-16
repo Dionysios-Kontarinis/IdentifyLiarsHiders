@@ -2,6 +2,7 @@ IdentifyLiarsHiders
 ====================
 
 This is an **Octave project** where we use **Machine Learning** in order to identify a particular type of agents.
+
 Sometimes, during a multi-agent argumentation debate, some agents **lie or hide** important arguments, because they have personal reasons to do so.
 We propose a way to analyze the trace of an argumentation debate, in order to identify liar and hiding agents.
 The Machine Learning algorithm used here is **Logistic Regression**. It learns from a training set, and it is evaluated with respect to a test set.
